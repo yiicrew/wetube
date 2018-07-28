@@ -9,3 +9,6 @@ use app\widgets\News;
 $this->title = Yii::$app->name;
 ?>
 
+<?= app\widgets\Recommended::widget([
+	'limit' => 6
+]) ?>

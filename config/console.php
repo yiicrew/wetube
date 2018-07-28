@@ -18,6 +18,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@tests' => dirname(__DIR__) . '/tests',
+        '@uploads' => dirname(__DIR__) . '/public/uploads',
     ],
     'logger' => [
         'traceLevel' => YII_DEBUG ? 3 : 0,

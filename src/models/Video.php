@@ -13,8 +13,8 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property string $tags
- * @property string $image_path
- * @property string $file_path
+ * @property string $image
+ * @property string $file_name
  * @property int $file_size
  * @property int $duration
  * @property string $url
@@ -36,11 +36,13 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Categories $category
- * @property Users $user
+ * @property Category $categories
+ * @property User $user
  */
 class Video extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = 10;
+
     /**
      * {@inheritdoc}
      */
@@ -59,7 +61,7 @@ class Video extends \yii\db\ActiveRecord
             [['user_id', 'category_id', 'file_size', 'duration', 'like_count', 'dislike_count', 'view_count', 'favourite_count', 'playlist_count', 'download_count', 'comment_count', 'allow_downloads', 'allow_comments', 'allow_rating', 'rating', 'is_featured', 'is_hd', 'status'], 'integer'],
             [['description', 'tags', 'embed_code'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['title', 'image_path', 'file_path', 'url'], 'string', 'max' => 255],
+            [['title', 'image', 'file_name', 'url'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::class, 'targetAttribute' => ['category_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -77,8 +79,8 @@ class Video extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'tags' => 'Tags',
-            'image_path' => 'Image Path',
-            'file_path' => 'File Path',
+            'image' => 'Image',
+            'file_name' => 'File Name',
             'file_size' => 'File Size',
             'duration' => 'Duration',
             'url' => 'Url',
@@ -107,7 +109,7 @@ class Video extends \yii\db\ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(Categories::class, ['id' => 'category_id']);
+        return $this->hasOne(Category::class, ['id' => 'category_id']);
     }
 
     /**
@@ -115,6 +117,11 @@ class Video extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::class, ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getThumb()
+    {
+        return Yii::$app->getRequest()->getBaseUrl() . '/uploads/thumbs/' . $this->image;
     }
 }
