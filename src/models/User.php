@@ -197,4 +197,9 @@ class User extends ActiveRecord implements IdentityInterface
         $this->generatePasswordHash($this->password);
         return parent::beforeSave($inser);
     }
+
+    public function __toString()
+    {
+        return $this->username;
+    }
 }

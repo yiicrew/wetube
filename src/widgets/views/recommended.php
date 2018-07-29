@@ -1,17 +1,22 @@
 <section class="widget widget-recommended">
-  <header class="widget-header">
-    <h3 class="widget-title">Recommended</h3>
-  </header>
-  <div class="widget-block row">
-  <?php foreach ($videos as $video): ?>
-    <div class="col-lg-2 video">
-      <div class="video-media">
-        <img src="<?= $video->thumb ?>" class="video-poster">
-        <span class="badge badge-secondary video-duration"><?= $video->duration ?></span>
-      </div>
-      <h5 class="video-title"><?= $video->title ?></h5>
-      <?= yii\helpers\Html::a($video->category, ["video/index"]) ?>
-    </div>
-  <?php endforeach ?>
-  </div>
-</div>
+	<header class="widget-header">
+		<h3 class="widget-title">Recommended</h3>
+	</header>
+	<div class="widget-block row">
+	<?php foreach ($videos as $video): ?>
+		<div class="col col-lg-2">
+			<article class="video">
+				<div class="video-media">
+					<img src="<?= $video->thumb ?>" class="video-poster">
+					<span class="video-duration"><?= $video->duration ?></span>
+				</div>
+				<div class="video-block">
+					<h5 class="video-title"><?= $video->title ?></h5>
+					<span class="video-author"><?= $video->user ?></span>
+					<?= yii\helpers\Html::a($video->category, ['video/index', 'category' => $video->category]) ?>
+				</div>
+			</article>
+		</div>
+	<?php endforeach ?>
+	</div>
+</section>

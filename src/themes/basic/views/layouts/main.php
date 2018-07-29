@@ -64,7 +64,7 @@ BasicAsset::register($this);
     ?>
 
     <main class="page-content" role="main">
-        <div class="container">
+        <div class="container-fluid">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -74,7 +74,7 @@ BasicAsset::register($this);
     </main>
 
     <footer class="page-footer">
-        <div class="container">
+        <div class="container-fluid">
             <p class="copyright">&copy; <?= Yii::$app->name ?> <?= date('Y') ?></p>
         </div>
     </footer>
