@@ -74,4 +74,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Videos::class, ['category_id' => 'id']);
     }
+
+    public function __toString()
+    {
+      return $this->name;
+    }
 }
