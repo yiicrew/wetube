@@ -1,4 +1,4 @@
-<section class="widget widget-recommended">
+<section class="widget widget-recently-uploaded">
 	<header class="widget-header">
 		<h3 class="widget-title"><?= $title ?></h3>
 	</header>

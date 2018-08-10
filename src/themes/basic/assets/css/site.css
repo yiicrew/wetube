@@ -17,13 +17,21 @@ body {
   background-color: #eee;
 }
 
+.container-fluid {}
+
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
 .col {
   padding: 0 10px;
 }
 
+
 .page-content {
   /* @todo: improve this */
-  padding-top: 100px;
+  padding-top: 90px;
 
   height: auto;
   flex: 1 auto;
@@ -300,4 +308,9 @@ a.desc:after {
 .video-author {
   display: block;
   color: #999999;
+}
+
+/* Widget */
+.widget-header {
+  margin-bottom: 15px;
 }

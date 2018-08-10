@@ -43,6 +43,7 @@ BasicAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'containerOptions' => ['class' => 'navbar-collapse justify-content-end'],
+        'innerContainerOptions' => ['class' => 'container-fluid'],
         'options' => [
             'class' => 'navbar-expand-lg fixed-top',
         ],

@@ -2,11 +2,13 @@
 
 namespace app\widgets;
 
+use yii\bootstrap4\Widget;
 use app\models\Video;
 use app\models\Category;
 
-class Recommended extends \yii\bootstrap4\Widget
+class Recommended extends Widget
 {
+	public $title = 'Recommended';
 	public $limit = 10;
 
 	public function run()
@@ -27,10 +29,10 @@ class Recommended extends \yii\bootstrap4\Widget
 			->with('user')
 			->where(['status' => Video::STATUS_ACTIVE])
 			->limit($this->limit)
-			->orderBy('created_at')
 			->all();
 
 		return $this->render('recommended', [
+			'title' => $this->title,
 			'videos' => $videos
 		]);
 	}
